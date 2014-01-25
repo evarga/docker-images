@@ -28,7 +28,7 @@ RUN apt-get -y install apache2 libapache2-mod-python libapache2-mod-wsgi
 # Install main Graphite components (carbon-cache, Web application & whisper) with dependencies
 RUN pip install https://github.com/graphite-project/ceres/tarball/master
 RUN pip install whisper
-RUN apt-get -y install python-twisted
+RUN apt-get -y install python-twisted python-cairo
 RUN pip install carbon
 RUN pip install graphite-web
 RUN apt-get -y install python-django-tagging
@@ -43,7 +43,7 @@ RUN mv /opt/graphite/conf/dashboard.conf.example /opt/graphite/conf/dashboard.co
 RUN mv /opt/graphite/conf/graphTemplates.conf.example /opt/graphite/conf/graphTemplates.conf
 RUN mv /opt/graphite/conf/graphite.wsgi.example /opt/graphite/conf/graphite.wsgi
 RUN mv /opt/graphite/webapp/graphite/local_settings.py.example /opt/graphite/webapp/graphite/local_settings.py
-RUN cd /opt/graphite/webapp/graphite && python manage.py syncdb --noinput
+RUN cd /opt/graphite/webapp/graphite && echo "yes\n\nroot@example.com\nroot\nroot" | python manage.py syncdb
 RUN chown -R www-data /opt/graphite/storage
 
 RUN rm /etc/apache2/sites-available/default
