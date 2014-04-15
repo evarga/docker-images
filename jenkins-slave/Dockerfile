@@ -8,11 +8,11 @@ RUN echo "deb http://archive.ubuntu.com/ubuntu precise main universe" > /etc/apt
 RUN apt-get update
 
 # Install a basic SSH server
-RUN apt-get -y install openssh-server
+RUN apt-get install -y openssh-server
 RUN mkdir -p /var/run/sshd
 
 # Install JDK 7 (latest edition)
-RUN apt-get -y install openjdk-7-jdk
+RUN apt-get install -y --no-install-recommends openjdk-7-jdk
 
 # Add user jenkins to the image
 RUN adduser --quiet jenkins
