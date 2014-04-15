@@ -1,5 +1,4 @@
 # This Dockerfile is used to build an image containing basic stuff to be used as a Jenkins slave build node.
-
 FROM ubuntu:latest
 MAINTAINER Ervin Varga <ervin.varga@gmail.com>
 
