@@ -10,11 +10,6 @@ MAINTAINER Ervin Varga <ervin.varga@gmail.com>
 RUN echo "deb http://archive.ubuntu.com/ubuntu precise main universe" > /etc/apt/sources.list
 RUN apt-get update
 
-# Hack for initctl on Ubuntu Linux.
-# See: https://github.com/dotcloud/docker/issues/1024
-RUN dpkg-divert --local --rename --add /sbin/initctl
-RUN ln -s /bin/true /sbin/initctl
-
 # Install common stuff needed by the rest of this build file.
 RUN apt-get -y install python-pip memcached python-memcache python-ldap
 RUN apt-get -y install gcc
