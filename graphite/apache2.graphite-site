@@ -3,7 +3,7 @@
 #</IfModule>
 WSGISocketPrefix /var/run/apache2/wsgi
 
-<VirtualHost *:80>
+<VirtualHost _default_:80>
         ServerName graphite
         DocumentRoot "/opt/graphite/webapp"
         ErrorLog /opt/graphite/storage/log/webapp/error.log
