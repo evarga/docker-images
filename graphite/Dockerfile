@@ -43,6 +43,7 @@ RUN chown -R www-data /opt/graphite/storage
 
 ADD ./apache2.graphite-site.conf /etc/apache2/sites-available/
 RUN a2ensite apache2.graphite-site
+RUN a2dissite 000-default
 
 # Graphite Web application port (standard HTTP)
 EXPOSE 80
