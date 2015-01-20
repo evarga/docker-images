@@ -42,7 +42,6 @@ RUN cd /opt/graphite/webapp/graphite && echo "yes\n\nroot@example.com\nroot\nroo
 RUN chown -R www-data /opt/graphite/storage
 
 ADD ./apache2.graphite-site.conf /etc/apache2/sites-available/
-RUN a2dissite default
 RUN a2ensite apache2.graphite-site
 
 # Graphite Web application port (standard HTTP)
