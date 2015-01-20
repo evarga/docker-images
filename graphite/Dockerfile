@@ -41,8 +41,9 @@ RUN mv /opt/graphite/webapp/graphite/local_settings.py.example /opt/graphite/web
 RUN cd /opt/graphite/webapp/graphite && echo "yes\n\nroot@example.com\nroot\nroot" | python manage.py syncdb
 RUN chown -R www-data /opt/graphite/storage
 
-RUN rm /etc/apache2/sites-available/default
-ADD ./apache2.graphite-site /etc/apache2/sites-available/default
+ADD ./apache2.graphite-site.conf /etc/apache2/sites-available/
+RUN a2dissite default
+RUN a2ensite apache2.graphite-site
 
 # Graphite Web application port (standard HTTP)
 EXPOSE 80
