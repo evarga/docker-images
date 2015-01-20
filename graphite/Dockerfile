@@ -3,12 +3,12 @@
 # (graphite-web). It comes bundled with an Apache HTTP Web server extended with mod_wsgi & mod_python. 
 # All major processes inside the box are managed via 'supervisor'.
 
-FROM ubuntu:latest
+FROM ubuntu:trusty
 MAINTAINER Ervin Varga <ervin.varga@gmail.com>
 
 # Make sure the package repository is up to date.
-RUN echo "deb http://archive.ubuntu.com/ubuntu precise main universe" > /etc/apt/sources.list
-RUN apt-get update
+RUN apt-get -y update
+RUN apt-get -y upgrade
 
 # Install common stuff needed by the rest of this build file.
 RUN apt-get -y install python-pip memcached python-memcache python-ldap
