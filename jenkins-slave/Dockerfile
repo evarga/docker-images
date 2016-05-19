@@ -2,6 +2,9 @@
 FROM ubuntu:trusty
 MAINTAINER Ervin Varga <ervin.varga@gmail.com>
 
+# In case you need proxy
+#RUN echo 'Acquire::http::Proxy "http://127.0.0.1:8080";' >> /etc/apt/apt.conf
+
 # Upgrade packages on image
 RUN apt-get -q update &&\
     DEBIAN_FRONTEND="noninteractive" apt-get -q upgrade -y -o Dpkg::Options::="--force-confnew" && \
