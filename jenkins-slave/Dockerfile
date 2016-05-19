@@ -18,8 +18,7 @@ RUN apt-get -q update &&\
     mkdir -p /var/run/sshd
 
 # Install JDK 7 (latest edition)
-RUN export DEBIAN_FRONTEND="noninteractive" &&\
-    apt-get -q update &&\
+RUN apt-get -q update &&\
     DEBIAN_FRONTEND="noninteractive" apt-get -q install -y -o Dpkg::Options::="--force-confnew" openjdk-7-jre-headless &&\
     apt-get clean -y && rm -rf /var/lib/apt/lists/*
 
