@@ -8,6 +8,7 @@ MAINTAINER Ervin Varga <ervin.varga@gmail.com>
 # Upgrade packages on image
 RUN apt-get -q update &&\
     DEBIAN_FRONTEND="noninteractive" apt-get -q upgrade -y -o Dpkg::Options::="--force-confnew" --no-install-recommends && \
+	 apt-get -q autoremove && \
     apt-get -q clean -y && rm -rf /var/lib/apt/lists/* && rm -f /var/cache/apt/*.bin
 
 # Install and configure a basic SSH server
