@@ -2,6 +2,11 @@
 FROM ubuntu:trusty
 MAINTAINER Ervin Varga <ervin.varga@gmail.com>
 
+# Upgrade packages on image
+RUN apt-get -q update &&\
+    DEBIAN_FRONTEND="noninteractive" apt-get -q upgrade -y -o Dpkg::Options::="--force-confnew" && \
+    apt-get clean -y && rm -rf /var/lib/apt/lists/*
+
 # Install and configure a basic SSH server
 RUN apt-get -q update &&\
     DEBIAN_FRONTEND="noninteractive" apt-get -q install -y -o Dpkg::Options::="--force-confnew" openssh-server &&\
