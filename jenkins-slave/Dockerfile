@@ -16,7 +16,7 @@ RUN export DEBIAN_FRONTEND="noninteractive" &&\
     apt-get clean -y && rm -rf /var/lib/apt/lists/*
 
 # Set user jenkins to the image
-RUN adduser --quiet jenkins &&\
+RUN useradd -m -d /home/jenkins -s /bin/sh jenkins &&\
     echo "jenkins:jenkins" | chpasswd
 
 # Standard SSH port
