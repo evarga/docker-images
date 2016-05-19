@@ -12,7 +12,7 @@ RUN apt-get -q update &&\
 # Install JDK 7 (latest edition)
 RUN export DEBIAN_FRONTEND="noninteractive" &&\
     apt-get -q update &&\
-    DEBIAN_FRONTEND="noninteractive" apt-get -q install -y -o Dpkg::Options::="--force-confnew" openjdk-7-jdk &&\
+    DEBIAN_FRONTEND="noninteractive" apt-get -q install -y -o Dpkg::Options::="--force-confnew" openjdk-7-jre-headless &&\
     apt-get clean -y && rm -rf /var/lib/apt/lists/*
 
 # Set user jenkins to the image
