@@ -1,6 +1,7 @@
 # This Dockerfile is used to build an image containing basic stuff to be used as a Jenkins slave build node.
-FROM ubuntu:trusty
+FROM ubuntu:latest
 MAINTAINER Ervin Varga <ervin.varga@gmail.com>
+MAINTAINER Sylvain Maucourt <smaucourt@gmail.com>
 
 # In case you need proxy
 #RUN echo 'Acquire::http::Proxy "http://127.0.0.1:8080";' >> /etc/apt/apt.conf
@@ -8,8 +9,7 @@ MAINTAINER Ervin Varga <ervin.varga@gmail.com>
 # Add locales after locale-gen as needed
 # Upgrade packages on image
 # Preparations for sshd
-RUN locale-gen en_US.UTF-8 &&\
-    apt-get -q update &&\
+RUN apt-get -q update &&\
     DEBIAN_FRONTEND="noninteractive" apt-get -q upgrade -y -o Dpkg::Options::="--force-confnew" --no-install-recommends &&\
     DEBIAN_FRONTEND="noninteractive" apt-get -q install -y -o Dpkg::Options::="--force-confnew" --no-install-recommends openssh-server &&\
     apt-get -q autoremove &&\
