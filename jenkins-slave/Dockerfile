@@ -1,5 +1,5 @@
 # This Dockerfile is used to build an image containing basic stuff to be used as a Jenkins slave build node.
-FROM ubuntu:latest
+FROM ubuntu:bionic
 MAINTAINER Ervin Varga <ervin.varga@gmail.com>
 MAINTAINER Sylvain Maucourt <smaucourt@gmail.com>
 
@@ -10,6 +10,8 @@ MAINTAINER Sylvain Maucourt <smaucourt@gmail.com>
 # Upgrade packages on image
 # Preparations for sshd
 RUN apt-get -q update &&\
+    apt-get install -y locales
+RUN locale-gen en_US.UTF-8 &&\
     DEBIAN_FRONTEND="noninteractive" apt-get -q upgrade -y -o Dpkg::Options::="--force-confnew" --no-install-recommends &&\
     DEBIAN_FRONTEND="noninteractive" apt-get -q install -y -o Dpkg::Options::="--force-confnew" --no-install-recommends openssh-server &&\
     apt-get -q autoremove &&\
